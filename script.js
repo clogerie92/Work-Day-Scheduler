@@ -2,6 +2,12 @@
    REMOVE COMMENTS BEFORE SUBMITTING YOUR CODE
 ************************************************/
 
+var interalId = setInterval(function() {
+  var currentDate = moment();
+  $("#currentDay").text(currentDate.format("dddd, MMMM Do YYYY, h:mm:ss a"));
+  console.log(interalId);
+}, 1000);
+
 // listen for save button clicks
 function doSomethingAboutClickOrSaveButton() {
     // get nearby values
