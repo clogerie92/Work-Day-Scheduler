@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    var hours = ["9", "10", "11", "12", "13", "14", "15", "16", "17"];
     var intervalId = setInterval(function() {
     var currentDate = moment();
     $("#currentDay").text(currentDate.format("dddd, MMMM Do YYYY, h:mm:ss a"));
@@ -6,33 +7,42 @@ $(document).ready(function() {
   }, 1000);
   
   // function to save time block descriptions
-  function saveDescription() {
-      var hr9 = $("#9").val();
-      localStorage.setItem("desc9", hr9);
+  function saveDescription(event) {
+      // var hr9 = $("#9").val();
+      // localStorage.setItem("desc9", hr9);
 
-      var hr10 = $("#10").val();
-      localStorage.setItem("desc10", hr10);
+      // var hr10 = $("#10").val();
+      // localStorage.setItem("desc10", hr10);
 
-      var hr11 = $("#11").val();
-      localStorage.setItem("desc11", hr11);
+      // var hr11 = $("#11").val();
+      // localStorage.setItem("desc11", hr11);
 
-      var hr12 = $("#12").val();
-      localStorage.setItem("desc12", hr12);
+      // var hr12 = $("#12").val();
+      // localStorage.setItem("desc12", hr12);
 
-      var hr13 = $("#13").val();
-      localStorage.setItem("desc13", hr13);
+      // var hr13 = $("#13").val();
+      // localStorage.setItem("desc13", hr13);
 
-      var hr14 = $("#14").val();
-      localStorage.setItem("des14", hr14);
+      // var hr14 = $("#14").val();
+      // localStorage.setItem("des14", hr14);
 
-      var hr15 = $("#15").val();
-      localStorage.setItem("desc15", hr15);
+      // var hr15 = $("#15").val();
+      // localStorage.setItem("desc15", hr15);
 
-      var hr16 = $("#16").val();
-      localStorage.setItem("desc16", hr16);
+      // var hr16 = $("#16").val();
+      // localStorage.setItem("desc16", hr16);
 
-      var hr17 = $("#17").val();
-      localStorage.setItem("desc17", hr17);
+      // var hr17 = $("#17").val();
+      // localStorage.setItem("desc17", hr17);
+      event.preventDefault();
+
+      var timeBlockVal = $(this).siblings(".timeBlock").val();
+      var hour = $(this).parent().attr("id").split("-")[1];
+      localStorage.setItem(hour, timeBlockVal);
+      console.log(timeBlockVal);
+      console.log(hour);
+
+
     };
     //event listener for save button
     $(".saveBtn").on("click", saveDescription);
@@ -66,8 +76,19 @@ $(document).ready(function() {
     var hour17Desc = localStorage.getItem("desc17");
     $("#17").val(hour17Desc);
     
+    // function to update time block color
+    var currentHour = moment().hour();
+    console.log(currentHour);
     function updateTimeBlockColor() {
-     
+      for (var i = 0; i < hours.length; i++) {
+        if (hours < currentHour) {
+          $(hours.toString()).addClass("past");
+        } else if (hours === currentHour) {
+          $(hours.toString()).addClass("present");
+        } else if (hours > currentHour) {
+          $(hours.toString()).addClass("future");
+        }
+      }
     
     }
     
