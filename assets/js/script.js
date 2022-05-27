@@ -1,12 +1,29 @@
 $(document).ready(function() {
     // get current hour
-    var currentHour = moment().format("h");
+    var currentHour = moment().format("H");
+    console.log(currentHour);
     // gets current time and day for jumbotron
     var intervalId = setInterval(function() {
     var currentDate = moment();
     $("#currentDay").text(currentDate.format("dddd, MMMM Do YYYY, h:mm:ss a"));
     console.log(intervalId);
   }, 1000);
+
+  // update time block color for each element with class time-block
+  function updateTimeBlockColor() {
+    var timeRow = $(this).attr("id").split("-")[1];
+
+    if (currentHour === timeRow) { // (9 = 9) -> present
+      $(this).addClass("present");
+    } else if (currentHour > timeRow) { // (9 < 10)
+      $(this).removeClass("present");
+      $(this).addClass("future");
+    } else if (currentHour < timeRow) { // (9 < 10)
+      $(this).removeClass("future");
+      $(this).addClass("past");
+    }
+  }
+  $(".time-block").each(updateTimeBlockColor);
   
   // function to save time block descriptions
   function saveDescription(event) {
@@ -30,25 +47,9 @@ $(document).ready(function() {
     $("#hour-16 .timeBlock").val(localStorage.getItem("16"));
     $("#hour-17 .timeBlock").val(localStorage.getItem("17"));
 
-    // update time block color for each element with class time-block
-    $(".time-block").each(function updateTimeBlockColor() {
-      var timeRow = $(this).attr("id").split("-")[1];
-
-      if (currentHour === timeRow) {
-        $(this).addClass("present");
-      } else if (currentHour < timeRow) {
-        $(this).removeClass("present");
-        $(this).addClass("future");
-      } else if (currentHour > timeRow) {
-        $(this).removeClass("future");
-        $(this).addClass("past");
-      }
-    });
-    
-
     // event listener for save button
     $(".saveBtn").on("click", saveDescription);
 
     // function to update time block color
-    updateTimeBlockColor();
+    // updateTimeBlockColor();
 });
