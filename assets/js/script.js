@@ -13,12 +13,12 @@ $(document).ready(function() {
   function updateTimeBlockColor() {
     var timeRow = $(this).attr("id").split("-")[1];
 
-    if (currentHour === timeRow) { // (9 = 9) -> present
+    if (currentHour === timeRow) {
       $(this).addClass("present");
-    } else if (currentHour > timeRow) { // (9 < 10)
+    } else if (currentHour > timeRow) {
       $(this).removeClass("present");
       $(this).addClass("future");
-    } else if (currentHour < timeRow) { // (9 < 10)
+    } else if (currentHour < timeRow) {
       $(this).removeClass("future");
       $(this).addClass("past");
     }
@@ -49,7 +49,4 @@ $(document).ready(function() {
 
     // event listener for save button
     $(".saveBtn").on("click", saveDescription);
-
-    // function to update time block color
-    // updateTimeBlockColor();
 });
