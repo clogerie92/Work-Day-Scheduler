@@ -20,7 +20,7 @@ https://clogerie92.github.io/Work-Day-Scheduler/
 
 ## Mock-Up
 
-![A user clicks on slots on the color-coded calendar and edits the events.](./assets/images/workdayscheduler.png)
+![A user clicks on slots on the color-coded calendar and edits the events.](./assets/images/scheduler.png)
 
 ## Contributer: Carl Logerie
 
