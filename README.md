@@ -29,7 +29,7 @@ When users refresh the page the saved events persist
 
 ## Mock-Up
 
-![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/images/workdayscheduler.png)
+![A user clicks on slots on the color-coded calendar and edits the events.](./assets/images/workdayscheduler.png)
 
 ## Contributer: Carl Logerie
 
